@@ -5,7 +5,7 @@ root = Path(__file__).resolve().parent.parent
 public = root / 'public'
 out = root / 'docs'
 out.mkdir(exist_ok=True)
-for folder in ['fonts', 'images']:
+for folder in ['fonts', 'images', 'audio']:
  shutil.copytree(public/folder,out/folder,dirs_exist_ok=True)
 html = (public/'index.html').read_text().replace('href="/', 'href="./').replace('src="/', 'src="./')
 html = html.replace('<form id="rsvp-form">','<p class="small-note">სტუმრების დასტური მალე დაემატება. მანამდე, გთხოვ, პირადად მომწერო ♡</p><form id="rsvp-form">')

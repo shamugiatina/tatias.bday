@@ -2,6 +2,37 @@ const intro = document.querySelector('#intro');
 const invitation = document.querySelector('#invitation');
 const cake = document.querySelector('#cake');
 let opening = false;
+const music = document.querySelector('#background-music');
+const musicToggle = document.querySelector('#music-toggle');
+const musicStatus = document.querySelector('#music-status');
+let musicStarted = false;
+music.volume = 0.35;
+function syncMusicControl() {
+  const playing = !music.paused && !music.ended;
+  musicToggle.setAttribute('aria-pressed', String(playing));
+  musicToggle.setAttribute('aria-label', playing ? 'გამორთე მუსიკა' : 'ჩართე მუსიკა');
+  musicToggle.classList.toggle('playing', playing);
+  document.querySelector('#music-label').textContent = playing ? 'მუსიკა ჩართულია' : 'ჩართე მუსიკა';
+}
+async function playMusic() {
+  try {
+    await music.play();
+    musicStatus.textContent = '';
+  } catch {
+    musicStatus.textContent = 'მუსიკა ვერ ჩაირთო. ხელახლა სცადე მუსიკის ღილაკით.';
+  }
+  syncMusicControl();
+}
+music.addEventListener('play', syncMusicControl);
+music.addEventListener('pause', syncMusicControl);
+music.addEventListener('error', () => {
+  musicStatus.textContent = 'მუსიკა ვერ ჩაიტვირთა. სცადე ხელახლა.';
+  syncMusicControl();
+});
+musicToggle.addEventListener('click', () => {
+  if (music.paused) void playMusic();
+  else music.pause();
+});
 function confetti() {
   const container = document.querySelector('#confetti');
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -13,16 +44,19 @@ function confetti() {
 }
 cake.addEventListener('click', () => {
   if (opening) return; opening = true; cake.classList.add('blown');
+  // Start directly inside the user gesture for Safari and mobile browser policies.
+  if (!musicStarted) { musicStarted = true; void playMusic(); }
   cake.querySelector('.cake-hint').textContent = 'სურვილი ჩაიფიქრე? ♡';
   setTimeout(() => {
     intro.classList.add('exit'); intro.inert = true; intro.setAttribute('aria-hidden','true');
+    musicToggle.hidden = false;
     invitation.inert = false; invitation.removeAttribute('aria-hidden'); document.body.classList.remove('intro-active');
     window.scrollTo(0,0); confetti(); document.querySelector('.brand').focus({preventScroll:true});
   }, 1000);
 });
 document.querySelector('#replay').addEventListener('click', () => {
   opening = false; cake.classList.remove('blown'); cake.querySelector('.cake-hint').textContent = 'შეეხე და ჩააქრე ✧';
-  invitation.inert = true; invitation.setAttribute('aria-hidden','true'); intro.inert = false; intro.removeAttribute('aria-hidden'); intro.classList.remove('exit');
+  invitation.inert = true; invitation.setAttribute('aria-hidden','true'); intro.inert = false; intro.removeAttribute('aria-hidden'); intro.classList.remove('exit'); musicToggle.hidden = true;
   document.body.classList.add('intro-active'); cake.focus();
 });
 intro.addEventListener('keydown', event => { if(event.key === 'Tab') { event.preventDefault(); cake.focus(); } });

@@ -10,6 +10,8 @@ for image in ['birthday-cake.png','dresscode-women.png','stickers-3d.png']:
  encoded=base64.b64encode((root/f'images/{image}').read_bytes()).decode()
  html=html.replace(f'/images/{image}',f'data:image/png;base64,{encoded}')
  css=css.replace(f'/images/{image}',f'data:image/png;base64,{encoded}')
+audio=base64.b64encode((root/'audio/this-will-be.mp3').read_bytes()).decode()
+html=html.replace('/audio/this-will-be.mp3',f'data:audio/mpeg;base64,{audio}')
 js=(root/'app.js').read_text()
 start=js.index("    const response = await fetch('/api/rsvp'")
 end=js.index("    status.textContent = values.attending",start)
