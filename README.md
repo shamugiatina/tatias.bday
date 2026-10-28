@@ -32,3 +32,7 @@ The map illustration is decorative; the button opens the exact Google Maps link 
 ## Background music
 
 The host-supplied MP3 lives in `public/audio/this-will-be.mp3` and is copied into `docs/audio/`. Playback begins directly on the first cake tap (browser user-gesture requirement), loops at 35% volume and continues through the invitation. A floating accessible button pauses/resumes playback; replaying the cake respects an explicit pause. The button remains available if playback is blocked so the guest can retry. The offline preview embeds the MP3.
+
+## Vercel
+
+Import this GitHub repository at https://vercel.com/new and choose project name `tatias-bday`. The root `vercel.json` serves the checked-in `docs/` output without an install or build step. Keep Root Directory at the repository root. The requested default address is `tatias-bday.vercel.app`, subject to availability. After editing source, run `python3 scripts/build-pages.py` and push the updated `docs/`; Vercel redeploys linked GitHub changes. This static deployment has the same explicitly disabled RSVP form as GitHub Pages.
