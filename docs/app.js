@@ -12,7 +12,6 @@ function syncMusicControl() {
   musicToggle.setAttribute('aria-pressed', String(playing));
   musicToggle.setAttribute('aria-label', playing ? 'გამორთე მუსიკა' : 'ჩართე მუსიკა');
   musicToggle.classList.toggle('playing', playing);
-  document.querySelector('#music-label').textContent = playing ? 'მუსიკა ჩართულია' : 'ჩართე მუსიკა';
 }
 async function playMusic() {
   try {
