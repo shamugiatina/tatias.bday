@@ -76,8 +76,19 @@ envelope.addEventListener('click', () => {
 });
 document.querySelector('#close-letter').addEventListener('click', () => { envelope.click(); envelope.focus({preventScroll:true}); });
 const form = document.querySelector('#rsvp-form');
-form.querySelectorAll('input, textarea, button').forEach(element => { element.disabled = true; });
-form.querySelector('button').textContent = 'დასტური მალე დაემატება ♡';
+form.addEventListener('submit', async event => {
+  event.preventDefault(); const button = form.querySelector('button'); const status = document.querySelector('#form-status');
+  button.disabled = true; status.textContent = 'ინახება…';
+  try {
+    const values = Object.fromEntries(new FormData(form));
+    const stored = JSON.parse(localStorage.getItem('tatia-demo-rsvp') || '[]');
+    stored.push({...values, receivedAt: new Date().toISOString()});
+    localStorage.setItem('tatia-demo-rsvp', JSON.stringify(stored));
+    status.textContent = 'საცდელი პასუხი შენახულია მხოლოდ ამ ბრაუზერში. მასპინძელს არ გაგზავნია. ♡';
+    form.reset(); if(values.attending === 'yes') confetti();
+  } catch { status.textContent = 'საცდელი პასუხი ვერ შეინახა ბრაუზერმა. გთხოვ, სცადე ხელახლა.'; }
+  finally { button.disabled = false; }
+});
 
 // Touch-friendly candy bursts. All moving pieces are short lived and bounded.
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');

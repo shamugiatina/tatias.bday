@@ -27,7 +27,7 @@ The map illustration is decorative; the button opens the exact Google Maps link 
 
 ## GitHub Pages
 
-`python3 scripts/build-pages.py` builds the static version in `docs/`, with relative asset URLs for the `/tatias.bday/` project path. In repository Settings → Pages select Deploy from a branch, branch `main`, folder `/docs`, then Save. GitHub Pages hosts the invitation, cake, stickers, countdown and map. It cannot run the Node RSVP API: the static version clearly disables the RSVP form and asks guests to contact the host directly. The Node version remains unchanged and stores RSVPs on a persistent server. Rebuild and push `docs/` after editing the source.
+`python3 scripts/build-pages.py` builds the static version in `docs/`, with relative asset URLs for the `/tatias.bday/` project path. In repository Settings → Pages select Deploy from a branch, branch `main`, folder `/docs`, then Save. GitHub Pages hosts the invitation, cake, stickers, countdown and map. It cannot run the Node RSVP API: the static version provides a clearly labeled demo RSVP form, saving responses only in the guest’s current browser (`tatia-demo-rsvp` in localStorage). Responses are not sent to the host. The Node version remains unchanged and stores RSVPs on a persistent server. Rebuild and push `docs/` after editing the source.
 
 ## Background music
 
@@ -35,4 +35,4 @@ The host-supplied MP3 lives in `public/audio/this-will-be.mp3` and is copied int
 
 ## Vercel
 
-Import this GitHub repository at https://vercel.com/new and choose project name `tatias-bday`. The root `vercel.json` serves the checked-in `docs/` output without an install or build step. Keep Root Directory at the repository root. The requested default address is `tatias-bday.vercel.app`, subject to availability. After editing source, run `python3 scripts/build-pages.py` and push the updated `docs/`; Vercel redeploys linked GitHub changes. This static deployment has the same explicitly disabled RSVP form as GitHub Pages.
+Import this GitHub repository at https://vercel.com/new and choose project name `tatias-bday`. The root `vercel.json` serves the checked-in `docs/` output without an install or build step. Keep Root Directory at the repository root. The requested default address is `tatias-bday.vercel.app`, subject to availability. After editing source, run `python3 scripts/build-pages.py` and push the updated `docs/`; Vercel redeploys linked GitHub changes. This static deployment has the same browser-only demo RSVP form as GitHub Pages.
