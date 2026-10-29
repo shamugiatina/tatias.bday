@@ -48,3 +48,23 @@ footer p{font-size:29px}
 @media(max-width:360px){.hero h1>span{font-size:46px}.hero h1 .birthday-line{font-size:22px}.intro h1.intro-script{font-size:40px}.cake-button{padding-inline:0}.cake-realistic{width:260px;height:288px}}
 @media(max-height:600px){.intro h1.intro-script{font-size:36px;margin-bottom:4px}.intro{padding:16px}.cake-realistic{width:230px;height:255px}}
 @media(prefers-reduced-motion:reduce){.background-glitter:before,.background-glitter:after,.intro:before{animation:none;opacity:.25}}
+
+/* A sparkling frame leaves the wish and cake at the center. */
+.intro{background:radial-gradient(ellipse at 50% 48%,#fffaf0 5%,#fbe3eb 64%,#f0c4d6 100%)}
+.intro:before{background-size:37px 53px,61px 79px,97px 113px;opacity:.65}
+.intro-decoration{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+.intro-decoration:before,.intro-decoration:after{content:'';position:absolute;width:260px;height:260px;border-radius:50%;filter:blur(35px);background:radial-gradient(circle,#fff2d995,transparent 68%);animation:wish-glow 7s ease-in-out infinite alternate}
+.intro-decoration:before{left:-90px;top:9%}.intro-decoration:after{right:-100px;bottom:8%;animation-delay:-3s;background:radial-gradient(circle,#ffd3ea99,transparent 68%)}
+.intro-sticker{position:absolute;width:clamp(42px,14vw,65px);height:clamp(42px,14vw,65px);filter:drop-shadow(0 5px 6px #a7547820);opacity:.85;animation:wish-float 6s ease-in-out infinite}
+.intro-sticker-bow{left:12%;top:12%;rotate:-20deg}
+.intro-sticker-disco{right:11%;top:19%;width:clamp(48px,16vw,74px);height:clamp(48px,16vw,74px);rotate:13deg;animation-delay:-2s}
+.intro-sticker-heart{left:9%;bottom:19%;rotate:-14deg;animation-delay:-4s}
+.intro-sticker-butterfly{right:11%;bottom:13%;rotate:17deg;animation-delay:-1s}
+.wish-spark{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);background:linear-gradient(135deg,#fffdf6 20%,#efd395 52%,#fff8ec 80%);clip-path:polygon(50% 0,61% 38%,100% 50%,61% 62%,50% 100%,39% 62%,0 50%,39% 38%);filter:drop-shadow(0 0 4px #fff5ce);animation:wish-twinkle 3.8s ease-in-out infinite;animation-delay:var(--delay)}
+.wish-spark:nth-of-type(3n){background:#fffdf5}
+.intro h1.intro-script{text-shadow:0 2px 18px #fff9e8}
+@keyframes wish-twinkle{0%,100%{opacity:.25;transform:scale(.55) rotate(-10deg)}50%{opacity:1;transform:scale(1.15) rotate(12deg)}}
+@keyframes wish-float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(5deg)}}
+@keyframes wish-glow{to{opacity:.45;transform:translate(18px,-20px) scale(1.2)}}
+@media(max-height:600px){.intro-sticker-bow{top:6%;left:8%}.intro-sticker-disco{top:12%;right:6%}.intro-sticker-heart{left:6%;bottom:12%}.intro-sticker-butterfly{right:6%;bottom:7%}.intro-sticker{width:42px;height:42px}}
+@media(prefers-reduced-motion:reduce){.intro-sticker,.wish-spark,.intro-decoration:before,.intro-decoration:after{animation:none}.wish-spark{opacity:.65}}
