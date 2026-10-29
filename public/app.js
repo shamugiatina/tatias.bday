@@ -51,11 +51,11 @@ cake.addEventListener('click', () => {
     intro.classList.add('exit'); intro.inert = true; intro.setAttribute('aria-hidden','true');
     musicToggle.hidden = false;
     invitation.inert = false; invitation.removeAttribute('aria-hidden'); document.body.classList.remove('intro-active');
-    window.scrollTo(0,0); confetti(); document.querySelector('.brand').focus({preventScroll:true});
+    window.scrollTo(0,0); confetti(); document.querySelector('#home').focus({preventScroll:true});
   }, 1000);
 });
 document.querySelector('#replay').addEventListener('click', () => {
-  opening = false; cake.classList.remove('blown'); cake.querySelector('.cake-hint').textContent = 'შეეხე და ჩააქრე ✧';
+  opening = false; cake.classList.remove('blown'); cake.querySelector('.cake-hint').textContent = 'შეეხე და ჩააქრე';
   invitation.inert = true; invitation.setAttribute('aria-hidden','true'); intro.inert = false; intro.removeAttribute('aria-hidden'); intro.classList.remove('exit'); musicToggle.hidden = true;
   document.body.classList.add('intro-active'); cake.focus();
 });
