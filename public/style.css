@@ -75,3 +75,23 @@ footer p{font-size:29px}
 .music-toggle.playing .music-note{animation:music-note-pulse 1.8s ease-in-out infinite}
 @keyframes music-note-pulse{50%{opacity:.55;transform:scale(.9)}}
 @media(prefers-reduced-motion:reduce){.music-toggle.playing .music-note{animation:none}}
+
+/* Keep essential information readable and let the artwork lead. */
+#invitation,main section,.dress-heading,.location-info,.letter,.letter .signature,form,fieldset,legend,footer{text-align:center}
+.cake-hint,.small-note,.button,.hero .button,.location-info .button,.location-date,.countdown div span,.envelope-label,form>label,legend,.choices label>span,input:not([type=radio]),textarea,.form-status,footer button{font-family:'Noto Serif Georgian',Georgia,serif;font-size:16px;line-height:1.7;letter-spacing:0}
+.small-note{color:#754454;max-width:34ch;margin-inline:auto}
+form label>span{font-size:inherit}
+legend{width:100%}
+.button{justify-content:center;gap:16px}
+.date-ticket>span{font:16px/1.7 'Noto Serif Georgian',Georgia,serif;letter-spacing:0}
+.date-ticket i{font:18px/1.7 'Noto Serif Georgian',Georgia,serif}
+.outfit-palette .palette-card h3{font:15px/1.7 'Noto Serif Georgian',Georgia,serif;margin:0;overflow-wrap:anywhere}
+.outfit-palette .palette-card{justify-content:center;padding:12px 4px}
+.envelope-label{bottom:24px}
+.location-info .button{font-size:16px}
+.letter p{font:18px/1.9 'Noto Serif Georgian',Georgia,serif;margin:24px 0}
+.hero .date-ticket{display:flex;width:max-content;max-width:100%;margin:24px auto}
+.disco-poster{min-height:310px;padding:0}
+.poster-disco{top:35px}
+footer .script{font-size:32px}
+@media(max-width:360px){.choices label>span{font-size:15px}.outfit-palette .palette-card h3{font-size:13px}}
