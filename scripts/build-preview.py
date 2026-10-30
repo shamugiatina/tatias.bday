@@ -3,7 +3,7 @@ import base64
 root=Path(__file__).resolve().parent.parent/'public'
 html=(root/'index.html').read_text()
 css=(root/'style.css').read_text()
-for font in ['georgian','script','galaktioni']:
+for font in ['georgian','script','galaktioni','firago-italic']:
  encoded=base64.b64encode((root/f'fonts/{font}.ttf').read_bytes()).decode()
  css=css.replace(f'/fonts/{font}.ttf',f'data:font/ttf;base64,{encoded}')
 for image in ['birthday-cake.png','dresscode-women.png','stickers-3d.png']:
