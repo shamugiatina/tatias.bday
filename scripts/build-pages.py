@@ -8,7 +8,6 @@ out.mkdir(exist_ok=True)
 for folder in ['fonts', 'images', 'audio']:
  shutil.copytree(public/folder,out/folder,dirs_exist_ok=True)
 html = (public/'index.html').read_text().replace('href="/', 'href="./').replace('src="/', 'src="./')
-html = html.replace('პასუხის გაგზავნა', 'საცდელად შენახვა')
 (out/'index.html').write_text(html)
 (out/'style.css').write_text((public/'style.css').read_text().replace("url('/", "url('./"))
 js = (public/'app.js').read_text()
