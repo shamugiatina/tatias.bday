@@ -72,7 +72,7 @@ envelope.addEventListener('click', () => {
   const open = envelope.getAttribute('aria-expanded') !== 'true';
   envelope.setAttribute('aria-expanded', String(open)); envelope.classList.toggle('open',open);
   document.querySelector('#letter-content').hidden = !open;
-  document.querySelector('#envelope-hint').textContent = open ? 'შენთან ერთად უფრო ლამაზია ♡' : 'შეეხე კონვერტს';
+  document.querySelector('#envelope-hint').textContent = open ? 'შენთან ერთად უფრო ლამაზია ♡' : 'დააჭირე კონვერტს და გახსენი შენი მოსაწვევი ↑';
 });
 document.querySelector('#close-letter').addEventListener('click', () => { envelope.click(); envelope.focus({preventScroll:true}); });
 const form = document.querySelector('#rsvp-form');
@@ -84,7 +84,7 @@ form.addEventListener('submit', async event => {
     const stored = JSON.parse(localStorage.getItem('tatia-demo-rsvp') || '[]');
     stored.push({...values, receivedAt: new Date().toISOString()});
     localStorage.setItem('tatia-demo-rsvp', JSON.stringify(stored));
-    status.textContent = 'საცდელი პასუხი შენახულია მხოლოდ ამ ბრაუზერში. მასპინძელს არ გაგზავნია. ♡';
+    status.textContent = 'შენახულია ამ ბრაუზერში · მასპინძელს არ გაგზავნია. ♡';
     form.reset(); if(values.attending === 'yes') confetti();
   } catch { status.textContent = 'საცდელი პასუხი ვერ შეინახა ბრაუზერმა. გთხოვ, სცადე ხელახლა.'; }
   finally { button.disabled = false; }

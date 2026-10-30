@@ -72,7 +72,7 @@ envelope.addEventListener('click', () => {
   const open = envelope.getAttribute('aria-expanded') !== 'true';
   envelope.setAttribute('aria-expanded', String(open)); envelope.classList.toggle('open',open);
   document.querySelector('#letter-content').hidden = !open;
-  document.querySelector('#envelope-hint').textContent = open ? 'შენთან ერთად უფრო ლამაზია ♡' : 'შეეხე კონვერტს';
+  document.querySelector('#envelope-hint').textContent = open ? 'შენთან ერთად უფრო ლამაზია ♡' : 'დააჭირე კონვერტს და გახსენი შენი მოსაწვევი ↑';
 });
 document.querySelector('#close-letter').addEventListener('click', () => { envelope.click(); envelope.focus({preventScroll:true}); });
 const form = document.querySelector('#rsvp-form');

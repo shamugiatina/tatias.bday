@@ -95,3 +95,13 @@ legend{width:100%}
 .poster-disco{top:35px}
 footer .script{font-size:32px}
 @media(max-width:360px){.choices label>span{font-size:15px}.outfit-palette .palette-card h3{font-size:13px}}
+
+/* Keep the original letter and disco-poster character. */
+.letter p{font-family:'Galaktioni','Noto Serif Georgian',Georgia,serif;font-size:18px;line-height:1.9}
+.letter h3{font-size:28px}
+.letter .signature{margin-top:25px}
+.disco-poster{min-height:410px;padding:255px 15px 30px}
+.poster-disco{top:20px}
+.poster-title{font-size:25px;line-height:1.1}
+.poster-map-hint{font-size:17px}
+.demo-note{font:13px/1.6 'Noto Serif Georgian',Georgia,serif;color:#754454;max-width:35ch;margin:16px auto 0;text-align:center}
